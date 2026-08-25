@@ -16,7 +16,6 @@
   <style>
     :root {
       --desk-dark: #2B1E17;
-      --desk-wood: #3A2920;
       --paper-cream: #FAF6EE;
       --espresso: #261B16;
       --caramel: #B56B45;
@@ -105,7 +104,7 @@
       justify-content: center;
     }
 
-    /* The Center Stationery Note with the Question */
+    /* Center Stationery Note with the Question */
     .center-card {
       position: relative;
       z-index: 80;
@@ -237,7 +236,7 @@
     .polaroid {
       position: absolute;
       width: 195px;
-      height: 250px;
+      height: 240px;
       cursor: pointer;
       perspective: 1200px;
       pointer-events: auto;
@@ -277,28 +276,37 @@
       -webkit-backface-visibility: hidden;
       background: var(--card-white);
       border-radius: 4px;
-      padding: 10px 10px 30px 10px;
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
     }
 
+    /* Authentic Polaroid Chin (Without Captions) */
+    .card-front {
+      position: relative;
+      padding: 10px 10px 38px 10px;
+    }
+
     .card-front img {
       width: 100%;
-      height: 175px;
+      height: 100%;
       object-fit: cover;
       border-radius: 2px;
       background: #E5DDD3;
     }
 
-    .card-front .caption {
-      font-family: 'Caveat', cursive;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--espresso);
-      margin-top: auto;
-      text-align: center;
-      line-height: 1.1;
+    /* Subtle Dev Identifier Tag */
+    .card-index-id {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(38, 27, 22, 0.22);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 0.3px;
     }
 
     .card-back {
@@ -306,15 +314,15 @@
       background: #FFFDF9;
       justify-content: center;
       align-items: center;
-      padding: 1.2rem;
+      padding: 1.4rem;
       background-image: repeating-linear-gradient(transparent, transparent 23px, #EFE6DC 24px);
     }
 
     .card-back p {
       font-family: 'Caveat', cursive;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: var(--espresso);
-      line-height: 1.4;
+      line-height: 1.45;
       text-align: center;
     }
 
@@ -385,23 +393,26 @@
       font-weight: 500;
     }
 
-    /* Responsive Mobile Layout Adjustments */
+    /* Responsive Mobile Layout */
     @media (max-width: 768px) {
       .table-container {
-        min-height: 750px;
+        min-height: 950px;
       }
       .polaroid {
-        width: 140px;
-        height: 185px;
+        width: 135px;
+        height: 175px;
       }
-      .card-front img {
-        height: 125px;
+      .card-front {
+        padding: 8px 8px 28px 8px;
       }
-      .card-front .caption {
-        font-size: 1rem;
+      .card-index-id {
+        bottom: 5px;
+        right: 8px;
+        font-size: 0.55rem;
       }
       .card-back p {
         font-size: 1.05rem;
+        line-height: 1.35;
       }
       .button-box {
         flex-direction: column;
@@ -448,35 +459,35 @@
   </div>
 
   <script>
-    // 20 Structured Scattered Placements (Angles & Percentage Coordinates framing the center)
+    // 18 Scattered Placements Framing the Center
     const scatterConfig = [
       // Top row / cluster
-      { top: "4%",  left: "8%",  rot: -16, z: 12, cap: "Day one ✨", msg: "From our first conversation, I knew you were going to be special." },
-      { top: "2%",  left: "30%", rot: 8,   z: 15, cap: "Late calls 🌙", msg: "5 hours on the phone with you feels like 5 minutes." },
-      { top: "3%",  left: "54%", rot: -10, z: 14, cap: "That laugh 😂", msg: "Your laugh is my absolute favorite sound in the world." },
-      { top: "5%",  left: "76%", rot: 18,  z: 11, cap: "My peace 🕊️", msg: "Thank you for bringing so much calm and warmth into my life." },
+      { top: "3%",  left: "7%",  rot: -16, z: 12, msg: "From our first conversation, I knew you were going to be special." },
+      { top: "1%",  left: "29%", rot: 8,   z: 15, msg: "5 hours on the phone with you feels like 5 minutes." },
+      { top: "2%",  left: "53%", rot: -10, z: 14, msg: "Your laugh is my absolute favorite sound in the world." },
+      { top: "4%",  left: "76%", rot: 18,  z: 11, msg: "Thank you for bringing so much calm and warmth into my life." },
 
       // Left column overlapping cluster
-      { top: "28%", left: "3%",  rot: 14,  z: 18, cap: "Favorite smile 🌸", msg: "You brighten up even the most exhausting days." },
-      { top: "48%", left: "5%",  rot: -12, z: 22, cap: "Unmatched ✨", msg: "Your kindness and heart are truly one of a kind." },
-      { top: "68%", left: "4%",  rot: 20,  z: 16, cap: "Playlist for u 🎶", msg: "Every love song makes complete sense when I think of you." },
+      { top: "26%", left: "3%",  rot: 14,  z: 18, msg: "You brighten up even the most exhausting days." },
+      { top: "47%", left: "5%",  rot: -12, z: 22, msg: "Your kindness and heart are truly one of a kind." },
+      { top: "68%", left: "3%",  rot: 20,  z: 16, msg: "Every love song makes complete sense when I think of you." },
 
       // Right column overlapping cluster
-      { top: "26%", left: "80%", rot: -15, z: 19, cap: "Tiramisu time 🍰", msg: "'Tiramisu' means lift me up — and that’s what you do every day for me." },
-      { top: "46%", left: "82%", rot: 11,  z: 21, cap: "Distance who? ✈️", msg: "Miles apart, but you’ve always felt right next to me." },
-      { top: "66%", left: "79%", rot: -18, z: 17, cap: "FaceTime dates 🥂", msg: "I’d rather have a digital date with you than be anywhere else." },
+      { top: "24%", left: "80%", rot: -15, z: 19, msg: "'Tiramisu' means lift me up — and that’s what you do every day for me." },
+      { top: "45%", left: "82%", rot: 11,  z: 21, msg: "Miles apart, but you’ve always felt right next to me." },
+      { top: "66%", left: "79%", rot: -18, z: 17, msg: "I’d rather have a digital date with you than be anywhere else." },
 
       // Bottom row / cluster
-      { top: "74%", left: "18%", rot: -8,  z: 25, cap: "Sweetest soul 🍯", msg: "Everything about how you care for people inspires me." },
-      { top: "76%", left: "40%", rot: 12,  z: 28, cap: "Team US 🏆", msg: "You and me together against any time zone difference." },
-      { top: "73%", left: "62%", rot: -14, z: 24, cap: "Forever mood 🥰", msg: "I never feel as understood as when I’m talking to you." },
+      { top: "74%", left: "17%", rot: -8,  z: 25, msg: "Everything about how you care for people inspires me." },
+      { top: "76%", left: "39%", rot: 12,  z: 28, msg: "You and me together against any time zone difference." },
+      { top: "73%", left: "62%", rot: -14, z: 24, msg: "I never feel as understood as when I’m talking to you." },
 
-      // Layered Under-Cards (Tucked partially behind the center card & neighbors)
-      { top: "18%", left: "16%", rot: -22, z: 5,  cap: "No doubts 🔒", msg: "Zero doubts. 100% sure about you." },
-      { top: "16%", left: "68%", rot: 24,  z: 6,  cap: "Inside jokes 🤫", msg: "Still smiling at what you told me yesterday." },
-      { top: "60%", left: "22%", rot: 16,  z: 8,  cap: "Best notification 📱", msg: "Seeing your name pop up is the best part of my day." },
-      { top: "58%", left: "70%", rot: -20, z: 7,  cap: "Future trips 🗺️", msg: "Can't wait to walk through new cities holding your hand." },
-      { top: "82%", left: "52%", rot: 6,   z: 30, cap: "Always you 🎯", msg: "Yesterday, today, tomorrow — it's always you, Bube." }
+      // Layered Under-Cards
+      { top: "17%", left: "15%", rot: -22, z: 5,  msg: "Zero doubts. 100% sure about you." },
+      { top: "15%", left: "68%", rot: 24,  z: 6,  msg: "Still smiling at what you told me yesterday." },
+      { top: "59%", left: "21%", rot: 16,  z: 8,  msg: "Seeing your name pop up is the best part of my day." },
+      { top: "57%", left: "70%", rot: -20, z: 7,  msg: "Can't wait to walk through new cities holding your hand." },
+      { top: "82%", left: "51%", rot: 6,   z: 30, msg: "Yesterday, today, tomorrow — it's always you, Bube." }
     ];
 
     const fallbackImages = [
@@ -489,7 +500,7 @@
 
     const scatterLayer = document.getElementById('scatterLayer');
 
-    // Build the messy scatter
+    // Render cards with faint index identifier on the bottom-right chin
     scatterConfig.forEach((item, index) => {
       const card = document.createElement('div');
       card.className = 'polaroid';
@@ -505,7 +516,7 @@
         <div class="card-inner">
           <div class="card-front">
             <img src="${imagePath}" onerror="this.src='${fallbackSrc}'" alt="Memory ${index + 1}" loading="lazy" />
-            <div class="caption">${item.cap}</div>
+            <span class="card-index-id">#${index + 1}</span>
           </div>
           <div class="card-back">
             <div class="stamp">#${index + 1}</div>
