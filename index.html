@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>For Bube ☕🍰</title>
 
-  <!-- Typography -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
   
-  <!-- Canvas Confetti CDN -->
+  <!-- Confetti library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -21,16 +21,15 @@
       --rose: #E65C47;
       --rose-active: #CF4E3B;
       --card-white: #FFFFFF;
-      --glass-bg: rgba(255, 255, 255, 0.72);
+      --glass-bg: rgba(255, 255, 255, 0.78);
       --glass-border: rgba(255, 255, 255, 0.85);
-      --ios-shadow-subtle: 0 4px 20px -2px rgba(38, 27, 22, 0.06);
-      --ios-shadow-elevated: 0 16px 36px -6px rgba(38, 27, 22, 0.12), 0 6px 16px -4px rgba(38, 27, 22, 0.06);
-      --ios-shadow-modal: 0 24px 60px -10px rgba(0, 0, 0, 0.28);
+      --ios-shadow-subtle: 0 6px 20px -2px rgba(38, 27, 22, 0.08);
+      --ios-shadow-elevated: 0 16px 36px -6px rgba(38, 27, 22, 0.14), 0 6px 14px -4px rgba(38, 27, 22, 0.06);
+      --ios-shadow-modal: 0 28px 65px -12px rgba(0, 0, 0, 0.3);
       
       /* Apple Spring Physics */
       --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
       --spring-bouncy: cubic-bezier(0.34, 1.45, 0.64, 1);
-      --spring-quick: cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     * {
@@ -53,7 +52,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Falling YES Rain with Natural Swaying */
+    /* Falling YES Rain */
     #rain-container {
       position: fixed;
       inset: 0;
@@ -90,109 +89,155 @@
       100% { transform: translateX(18px) rotate(8deg); }
     }
 
-    /* App Container */
-    .wrapper {
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 6rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Staggered iOS Entrance Sequence */
-    .animate-in {
+    /* Hero Question Box */
+    .hero-container {
+      max-width: 750px;
+      margin: 2rem auto 2.5rem;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      box-shadow: var(--ios-shadow-elevated);
+      position: sticky;
+      top: 1.5rem;
+      z-index: 500;
       animation: iosFadeUp 0.85s var(--spring-smooth) backwards;
     }
-    .delay-1 { animation-delay: 0.08s; }
-    .delay-2 { animation-delay: 0.16s; }
-    .delay-3 { animation-delay: 0.24s; }
-    .delay-4 { animation-delay: 0.32s; }
 
     @keyframes iosFadeUp {
-      0% {
-        opacity: 0;
-        transform: translateY(22px) scale(0.97);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* Frosted Capsule Badge */
     .pill-badge {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--glass-border);
+      background: #EFE4D2;
       color: var(--espresso);
-      padding: 0.45rem 1.1rem;
+      padding: 0.4rem 1.1rem;
       border-radius: 999px;
       font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 0.2px;
-      margin-bottom: 1.25rem;
-      box-shadow: var(--ios-shadow-subtle);
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
     }
 
     .main-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(2.6rem, 6.5vw, 4.2rem);
-      text-align: center;
-      color: var(--espresso);
-      margin-bottom: 0.4rem;
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
       line-height: 1.15;
+      margin-bottom: 0.4rem;
       letter-spacing: -0.5px;
     }
 
     .subtitle {
       font-size: 1.05rem;
-      font-weight: 500;
       color: #7D6B62;
-      margin-bottom: 2.8rem;
-      text-align: center;
+      margin-bottom: 1.8rem;
     }
 
-    /* Scattered Postcards Collage */
-    .collage-grid {
-      width: 100%;
+    /* Action Buttons */
+    .button-box {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .btn {
+      font-family: -apple-system, BlinkMacSystemFont, 'Outfit', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      padding: 0.95rem 2.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: transform 0.35s var(--spring-bouncy), background-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+
+    .btn:active {
+      transform: scale(0.92) !important;
+    }
+
+    .btn-yes {
+      background: var(--rose);
+      color: #FFFFFF;
+      box-shadow: 0 10px 26px -4px rgba(230, 92, 71, 0.45);
+      animation: subtleFloat 3s ease-in-out infinite alternate;
+    }
+
+    .btn-yes:hover {
+      transform: scale(1.06);
+      background: var(--rose-active);
+      box-shadow: 0 14px 32px -4px rgba(230, 92, 71, 0.55);
+    }
+
+    @keyframes subtleFloat {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-3px) scale(1.02); }
+    }
+
+    .btn-no-wrapper {
+      position: relative;
+    }
+
+    .btn-no {
+      background: #E8E0D7;
+      color: #6C5C54;
+      box-shadow: var(--ios-shadow-subtle);
+    }
+
+    .btn-no.morphed {
+      background: var(--rose);
+      color: #FFFFFF;
+      box-shadow: 0 10px 28px -4px rgba(230, 92, 71, 0.45);
+      animation: springPop 0.45s var(--spring-bouncy) forwards;
+    }
+
+    @keyframes springPop {
+      0% { transform: scale(0.85); }
+      60% { transform: scale(1.12); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* 40 Scattered Postcards Canvas */
+    .collage-canvas {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 6rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-      gap: 2rem;
-      perspective: 1400px;
-      margin-bottom: 3.5rem;
-      padding: 0.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 2.2rem 1.8rem;
+      perspective: 1500px;
     }
 
     .postcard {
       position: relative;
-      height: 330px;
+      height: 295px;
       cursor: pointer;
       perspective: 1200px;
-      transition: transform 0.5s var(--spring-bouncy), z-index 0.3s ease;
+      transition: transform 0.5s var(--spring-bouncy), z-index 0.2s ease;
       will-change: transform;
     }
 
-    /* Tactile Postcard Press */
     .postcard:active {
-      transform: scale(0.96) !important;
+      transform: scale(0.95) !important;
     }
 
-    .postcard:hover {
-      z-index: 30;
-      transform: scale(1.035) translateY(-4px) !important;
+    .postcard:hover, .postcard.flipped {
+      z-index: 200 !important;
+      transform: scale(1.1) translateY(-8px) !important;
     }
-
-    /* Dynamic Rotations */
-    .postcard:nth-child(1) { transform: rotate(-3deg); }
-    .postcard:nth-child(2) { transform: rotate(2.2deg) translateY(8px); }
-    .postcard:nth-child(3) { transform: rotate(-2.5deg) translateY(-4px); }
-    .postcard:nth-child(4) { transform: rotate(3.2deg) translateY(4px); }
 
     .card-inner {
       position: relative;
@@ -217,61 +262,57 @@
       -webkit-backface-visibility: hidden;
       border-radius: 12px;
       background: var(--card-white);
-      padding: 12px 12px 28px 12px;
+      padding: 10px 10px 22px 10px;
       border: 0.5px solid rgba(0, 0, 0, 0.06);
       display: flex;
       flex-direction: column;
     }
 
-    /* Photo Front */
     .card-front img {
       width: 100%;
-      height: 235px;
+      height: 215px;
       object-fit: cover;
       border-radius: 8px;
       background: #ECE5DC;
-      transition: opacity 0.3s ease;
     }
 
     .card-front .caption {
       font-family: 'Caveat', cursive;
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--espresso);
       margin-top: auto;
       text-align: center;
     }
 
-    /* Realistic Frosted Tape */
     .tape {
       position: absolute;
-      top: -10px;
+      top: -9px;
       left: 50%;
       transform: translateX(-50%);
-      width: 75px;
-      height: 22px;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      width: 65px;
+      height: 19px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       border-left: 2px dashed rgba(200, 180, 150, 0.5);
       border-right: 2px dashed rgba(200, 180, 150, 0.5);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
       z-index: 5;
     }
 
-    /* Card Back (Handwritten Note) */
     .card-back {
       transform: rotateY(180deg);
       background: #FCFAF6;
       justify-content: center;
       align-items: center;
-      padding: 1.8rem;
-      background-image: repeating-linear-gradient(transparent, transparent 27px, #EFE6DC 28px);
+      padding: 1.5rem;
+      background-image: repeating-linear-gradient(transparent, transparent 25px, #EFE6DC 26px);
     }
 
     .card-back p {
       font-family: 'Caveat', cursive;
-      font-size: 1.48rem;
+      font-size: 1.35rem;
       color: var(--espresso);
       line-height: 1.45;
       text-align: center;
@@ -279,102 +320,24 @@
 
     .stamp {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      padding: 4px 8px;
+      top: 10px;
+      right: 10px;
+      padding: 3px 6px;
       border: 1.5px dashed var(--caramel);
       border-radius: 4px;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--caramel);
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
 
-    /* Actions Section */
-    .action-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .button-box {
-      display: flex;
-      gap: 1.25rem;
-      align-items: center;
-      position: relative;
-    }
-
-    /* High-Gloss iOS Tactile Buttons */
-    .btn {
-      font-family: -apple-system, BlinkMacSystemFont, 'Outfit', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      padding: 1.05rem 2.6rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: transform 0.35s var(--spring-bouncy), background-color 0.25s ease, box-shadow 0.25s ease;
-      will-change: transform;
-    }
-
-    .btn:active {
-      transform: scale(0.92) !important;
-    }
-
-    .btn-yes {
-      background: var(--rose);
-      color: #FFFFFF;
-      box-shadow: 0 10px 28px -4px rgba(230, 92, 71, 0.45);
-      animation: subtleFloat 3s ease-in-out infinite alternate;
-    }
-
-    .btn-yes:hover {
-      transform: scale(1.06);
-      background: var(--rose-active);
-      box-shadow: 0 14px 34px -4px rgba(230, 92, 71, 0.55);
-    }
-
-    @keyframes subtleFloat {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-3px) scale(1.02); }
-    }
-
-    /* The Morphing "No" Button */
-    .btn-no-wrapper {
-      position: relative;
-    }
-
-    .btn-no {
-      background: #E8E0D7;
-      color: #6C5C54;
-      box-shadow: var(--ios-shadow-subtle);
-    }
-
-    .btn-no.morphed {
-      background: var(--rose);
-      color: #FFFFFF;
-      box-shadow: 0 10px 28px -4px rgba(230, 92, 71, 0.45);
-      animation: springPop 0.45s var(--spring-bouncy) forwards;
-    }
-
-    @keyframes springPop {
-      0% { transform: scale(0.85); }
-      60% { transform: scale(1.12); }
-      100% { transform: scale(1.05); }
-    }
-
-    /* iOS Modal Sheet */
+    /* Modal Celebration */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(20, 15, 12, 0.45);
-      backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      background: rgba(20, 15, 12, 0.5);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -415,7 +378,6 @@
       font-size: 2.7rem;
       color: var(--rose);
       margin-bottom: 0.75rem;
-      letter-spacing: -0.5px;
     }
 
     .modal-card p {
@@ -427,9 +389,21 @@
     }
 
     @media (max-width: 640px) {
-      .collage-grid {
-        grid-template-columns: 1fr;
-        max-width: 320px;
+      .hero-container {
+        position: relative;
+        top: 0;
+        margin: 1.5rem 1rem 2rem;
+      }
+      .collage-canvas {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.2rem;
+        padding: 0.5rem;
+      }
+      .postcard {
+        height: 250px;
+      }
+      .card-front img {
+        height: 175px;
       }
       .button-box {
         flex-direction: column;
@@ -445,86 +419,22 @@
 
   <div id="rain-container"></div>
 
-  <div class="wrapper">
-    <div class="pill-badge animate-in delay-1">☕ Delivered with extra love</div>
-    
-    <h1 class="main-title animate-in delay-2">Can I be yours?</h1>
-    <p class="subtitle animate-in delay-3">(Tap or hover each photo for our memories)</p>
+  <!-- Main Question Hero Card (Frosted & Sticky) -->
+  <div class="hero-container">
+    <div class="pill-badge">☕ Delivered with extra love</div>
+    <h1 class="main-title">Can I be yours?</h1>
+    <p class="subtitle">(Hover or tap each memory postcard below...)</p>
 
-    <!-- Postcard Collage -->
-    <div class="collage-grid animate-in delay-4">
-      <!-- Card 1 -->
-      <div class="postcard">
-        <div class="tape"></div>
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="./images/photo1.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop&q=80'" alt="Memory 1" />
-            <div class="caption">Day one vibes ✨</div>
-          </div>
-          <div class="card-back">
-            <div class="stamp">LOVE</div>
-            <p>From the first late-night call, I knew you were someone special.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="postcard">
-        <div class="tape"></div>
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="./images/photo2.jpg" onerror="this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&auto=format&fit=crop&q=80'" alt="Memory 2" />
-            <div class="caption">My favorite smile 🌸</div>
-          </div>
-          <div class="card-back">
-            <div class="stamp">NO. 1</div>
-            <p>Miles apart, but you make every single day feel effortless and warm.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="postcard">
-        <div class="tape"></div>
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="./images/photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop&q=80'" alt="Memory 3" />
-            <div class="caption">Tiramisu time 🍰</div>
-          </div>
-          <div class="card-back">
-            <div class="stamp">SWEET</div>
-            <p>'Tiramisu' means lift me up — and that’s what you do every day for me, Bube.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="postcard">
-        <div class="tape"></div>
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="./images/photo4.jpg" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop&q=80'" alt="Memory 4" />
-            <div class="caption">Forever to go 💌</div>
-          </div>
-          <div class="card-back">
-            <div class="stamp">US</div>
-            <p>I don't want anyone else. I'm completely all in on this with you.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Buttons -->
-    <div class="action-container animate-in delay-4">
-      <div class="button-box">
-        <button class="btn btn-yes" id="yesBtn">Yes, absolutely! 💖</button>
-        
-        <div class="btn-no-wrapper">
-          <button class="btn btn-no" id="noBtn">No</button>
-        </div>
+    <div class="button-box">
+      <button class="btn btn-yes" id="yesBtn">Yes, absolutely! 💖</button>
+      <div class="btn-no-wrapper">
+        <button class="btn btn-no" id="noBtn">No</button>
       </div>
     </div>
   </div>
+
+  <!-- Scattered Collage (40 Postcards generated dynamically) -->
+  <div class="collage-canvas" id="collageCanvas"></div>
 
   <!-- iOS Celebration Sheet -->
   <div class="modal-overlay" id="celebrationOverlay">
@@ -536,32 +446,116 @@
   </div>
 
   <script>
+    // 40 Unique Romantic, Playful & Inside-joke Messages
+    const postcardMessages = [
+      { tag: "01", caption: "Day one vibes ✨", msg: "From our very first conversation, I knew you were going to be special." },
+      { tag: "02", caption: "Favorite smile 🌸", msg: "You have a way of brightening even the most overwhelming days." },
+      { tag: "03", caption: "Tiramisu time 🍰", msg: "'Tiramisu' means lift me up — and that’s what you do every single day." },
+      { tag: "04", caption: "Forever to go 💌", msg: "I don't want anyone else. I am completely all-in on this with you." },
+      { tag: "05", caption: "Late night calls 🌙", msg: "How five hours on the phone with you feels like five minutes." },
+      { tag: "06", caption: "Distance who? ✈️", msg: "Miles apart, but you’ve felt closer than anyone here." },
+      { tag: "07", caption: "That laugh 😂", msg: "Your laugh is genuinely the most contagious, beautiful sound." },
+      { tag: "08", caption: "Best notification 📱", msg: "Seeing your name pop up on my screen is the highlight of my day." },
+      { tag: "09", caption: "All my peace 🕊️", msg: "Thank you for being my calm and my sweetest comfort." },
+      { tag: "10", caption: "FaceTime dates 🥂", msg: "Screen lag and all, I’d rather have a digital date with you than anyone else." },
+      { tag: "11", caption: "Unmatched ✨", msg: "You have the kind of elegance, humor, and heart that can't be matched." },
+      { tag: "12", caption: "Sweetest soul 🍯", msg: "Everything about how you care for people inspires me." },
+      { tag: "13", caption: "Playlist for you 🎶", msg: "Every love song starts making complete sense when I think of you." },
+      { tag: "14", caption: "Future trips 🗺️", msg: "Can't wait to explore new cities with your hand in mine." },
+      { tag: "15", caption: "My favorite human 💖", msg: "Out of 8 billion people, you're the only one on my mind." },
+      { tag: "16", caption: "No backup plans 🔒", msg: "Zero doubts. 100% sure about you." },
+      { tag: "17", caption: "Inside jokes 🤫", msg: "Still laughing at what you said last week. You're hilarious." },
+      { tag: "18", caption: "Effortless ☕", msg: "Loving you has been the easiest, most natural thing in the world." },
+      { tag: "19", caption: "Your eyes 👀", msg: "Could get lost in your smile for hours across a screen." },
+      { tag: "20", caption: "Pure warmth ☀️", msg: "You bring warmth into every single conversation we share." },
+      { tag: "21", caption: "Sweet treat 🧁", msg: "Hope you're enjoying every single bite of that tiramisu!" },
+      { tag: "22", caption: "Team US 🏆", msg: "You and me together against any time zone difference." },
+      { tag: "23", caption: "The easiest yes 💍", msg: "Saying yes to you will always be the simplest choice." },
+      { tag: "24", caption: "Good mornings 🌅", msg: "Waking up to your texts always sets my whole day right." },
+      { tag: "25", caption: "Cherished 🌷", msg: "Every small memory we've made so far is locked in my heart." },
+      { tag: "26", caption: "Proud of you 🌟", msg: "I love seeing you work hard and shine. You're incredible." },
+      { tag: "27", caption: "My confidante 🗝️", msg: "You're the first person I want to tell when anything happens." },
+      { tag: "28", caption: "Forever mood 🥰", msg: "Never felt as understood and appreciated as when I talk to you." },
+      { tag: "29", caption: "Countdown ⏳", msg: "Counting every second until our next reunion in person." },
+      { tag: "30", caption: "Irreplaceable 💎", msg: "Nobody does it like you, Bube." },
+      { tag: "31", caption: "Pure joy 🎈", msg: "You make ordinary moments feel like genuine adventures." },
+      { tag: "32", caption: "Soft heart 🧸", msg: "Your kindness is the sweetest thing in this world." },
+      { tag: "33", caption: "Endless talks 💬", msg: "We never run out of things to say, and I love that about us." },
+      { tag: "34", caption: "Always you 🎯", msg: "Yesterday, today, tomorrow — it's always you." },
+      { tag: "35", caption: "Butterflies 🦋", msg: "You still give me butterflies every single time we connect." },
+      { tag: "36", caption: "My priority 💫", msg: "Making you happy is always at the top of my list." },
+      { tag: "37", caption: "Ready for us 🚀", msg: "Ready for every chapter, every trip, and every moment together." },
+      { tag: "38", caption: "Best blessing 🙏", msg: "Meeting you was the greatest thing to happen to me." },
+      { tag: "39", caption: "One call away 📞", msg: "Whenever you need me, I am always just one ring away." },
+      { tag: "40", caption: "Be mine? 💖", msg: "Now let's make this official. Will you be my girlfriend?" }
+    ];
+
+    // Aesthetic image fallback placeholders
+    const fallbackImages = [
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+    ];
+
+    const collageCanvas = document.getElementById('collageCanvas');
+
+    // Dynamically render 40 scattered postcards
+    postcardMessages.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'postcard';
+      
+      // Random organic tilt & vertical shift
+      const randomRot = (Math.random() * 10 - 5).toFixed(1);
+      const randomY = (Math.random() * 14 - 7).toFixed(1);
+      card.style.transform = `rotate(${randomRot}deg) translateY(${randomY}px)`;
+
+      const fallbackSrc = fallbackImages[index % fallbackImages.length];
+      const imagePath = `./images/photo${index + 1}.jpg`;
+
+      card.innerHTML = `
+        <div class="tape"></div>
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="${imagePath}" onerror="this.src='${fallbackSrc}'" alt="Memory ${index + 1}" loading="lazy" />
+            <div class="caption">${item.caption}</div>
+          </div>
+          <div class="card-back">
+            <div class="stamp">#${item.tag}</div>
+            <p>${item.msg}</p>
+          </div>
+        </div>
+      `;
+
+      // Tap support for mobile touch
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+
+      collageCanvas.appendChild(card);
+    });
+
+    // Morphing "No" Button
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
     const rainContainer = document.getElementById('rain-container');
     const overlay = document.getElementById('celebrationOverlay');
-    const postcards = document.querySelectorAll('.postcard');
 
-    // Mobile tap support for flipping cards
-    postcards.forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
-      });
-    });
-
-    // Morphing No Button with iOS spring transitions
     const noResponses = [
       "Yes! 🥰",
       "Yes (obviously)",
       "100% Yes 💕",
-      "Yes Please! 🍰"
+      "Yes Please! 🍰",
+      "Always Yes 💖"
     ];
     let responseIdx = 0;
 
     function morphNoButton(e) {
       if (e) e.preventDefault();
       noBtn.classList.remove('morphed');
-      void noBtn.offsetWidth; // Force reflow for spring animation
+      void noBtn.offsetWidth;
       noBtn.classList.add('morphed');
       noBtn.textContent = noResponses[responseIdx % noResponses.length];
       responseIdx++;
@@ -570,44 +564,27 @@
     noBtn.addEventListener('mouseenter', morphNoButton);
     noBtn.addEventListener('touchstart', morphNoButton, { passive: false });
 
-    // Celebration Triggers
+    // Celebration triggers
     yesBtn.addEventListener('click', triggerCelebration);
     noBtn.addEventListener('click', triggerCelebration);
 
     function triggerCelebration() {
-      // 1. Dual-phase Confetti Blast
-      confetti({
-        particleCount: 110,
-        spread: 80,
-        origin: { y: 0.6 }
-      });
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
       setTimeout(() => {
-        confetti({
-          particleCount: 90,
-          angle: 60,
-          spread: 60,
-          origin: { x: 0 }
-        });
-        confetti({
-          particleCount: 90,
-          angle: 120,
-          spread: 60,
-          origin: { x: 1 }
-        });
+        confetti({ particleCount: 90, angle: 60, spread: 60, origin: { x: 0 } });
+        confetti({ particleCount: 90, angle: 120, spread: 60, origin: { x: 1 } });
       }, 200);
 
-      // 2. Start Swaying YES Rain
       startYesRain();
 
-      // 3. Open Modal
       setTimeout(() => {
         overlay.classList.add('active');
       }, 950);
     }
 
     function startYesRain() {
-      const items = ['YES!', 'YES! 💖', '🍰', 'YES 🥰', '✨', 'YES!!', 'Bube + Me'];
-      const totalDrops = 45;
+      const items = ['YES!', 'YES! 💖', '🍰', 'YES 🥰', '✨', 'YES!!', 'Bube + Me', '💌'];
+      const totalDrops = 50;
 
       for (let i = 0; i < totalDrops; i++) {
         setTimeout(() => {
@@ -618,7 +595,6 @@
           dropContent.className = 'falling-content';
           dropContent.textContent = items[Math.floor(Math.random() * items.length)];
 
-          // Random dynamics & depth simulation
           const scale = 0.8 + Math.random() * 0.9;
           const duration = 2.4 + Math.random() * 2.2;
           const leftPosition = Math.random() * 92;
@@ -631,11 +607,10 @@
           dropWrapper.appendChild(dropContent);
           rainContainer.appendChild(dropWrapper);
 
-          // Auto-remove drop after animation
           dropWrapper.addEventListener('animationend', () => {
             dropWrapper.remove();
           });
-        }, i * 75);
+        }, i * 70);
       }
     }
   </script>
