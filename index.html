@@ -5,31 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>For Bube ☕🍰</title>
 
-  <!-- Google Fonts -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
   
-  <!-- Confetti library -->
+  <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg-cream: #FAF7F2;
+      --desk-dark: #2B1E17;
+      --desk-wood: #3A2920;
+      --paper-cream: #FAF6EE;
       --espresso: #261B16;
       --caramel: #B56B45;
       --rose: #E65C47;
       --rose-active: #CF4E3B;
-      --card-white: #FFFFFF;
-      --glass-bg: rgba(255, 255, 255, 0.78);
-      --glass-border: rgba(255, 255, 255, 0.85);
-      --ios-shadow-subtle: 0 6px 20px -2px rgba(38, 27, 22, 0.08);
-      --ios-shadow-elevated: 0 16px 36px -6px rgba(38, 27, 22, 0.14), 0 6px 14px -4px rgba(38, 27, 22, 0.06);
-      --ios-shadow-modal: 0 28px 65px -12px rgba(0, 0, 0, 0.3);
+      --card-white: #FFFFF8;
       
       /* Apple Spring Physics */
       --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
       --spring-bouncy: cubic-bezier(0.34, 1.45, 0.64, 1);
+      --shadow-polaroid: 0 14px 28px rgba(0, 0, 0, 0.28), 0 6px 10px rgba(0, 0, 0, 0.18);
+      --shadow-hover: 0 26px 50px rgba(0, 0, 0, 0.45), 0 10px 20px rgba(0, 0, 0, 0.25);
+      --shadow-center: 0 20px 45px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     * {
@@ -41,15 +41,19 @@
     }
 
     body {
-      background-color: var(--bg-cream);
-      color: var(--espresso);
-      font-family: -apple-system, BlinkMacSystemFont, 'Outfit', 'SF Pro Text', sans-serif;
+      background-color: var(--desk-dark);
+      background-image: 
+        radial-gradient(ellipse at center, rgba(74, 52, 40, 0.65) 0%, rgba(30, 20, 15, 0.95) 100%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 2px, transparent 2px, transparent 8px);
       min-height: 100vh;
       overflow-x: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Outfit', sans-serif;
       position: relative;
-      background-image: radial-gradient(rgba(38, 27, 22, 0.08) 0.75px, transparent 0.75px);
-      background-size: 28px 28px;
-      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem 4rem;
     }
 
     /* Falling YES Rain */
@@ -57,7 +61,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 999;
+      z-index: 9999;
       overflow: hidden;
     }
 
@@ -74,7 +78,7 @@
       color: var(--rose);
       display: inline-block;
       animation: swayAir 2.8s ease-in-out infinite alternate;
-      text-shadow: 0 2px 10px rgba(230, 92, 71, 0.25);
+      text-shadow: 0 2px 10px rgba(230, 92, 71, 0.35);
     }
 
     @keyframes fallDown {
@@ -85,62 +89,75 @@
     }
 
     @keyframes swayAir {
-      0% { transform: translateX(-18px) rotate(-8deg); }
-      100% { transform: translateX(18px) rotate(8deg); }
+      0% { transform: translateX(-16px) rotate(-8deg); }
+      100% { transform: translateX(16px) rotate(8deg); }
     }
 
-    /* Hero Question Box */
-    .hero-container {
-      max-width: 750px;
-      margin: 2rem auto 2.5rem;
-      padding: 2.2rem 1.5rem;
+    /* Tabletop Canvas Viewport */
+    .table-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      min-height: 900px;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* The Center Stationery Note with the Question */
+    .center-card {
+      position: relative;
+      z-index: 80;
+      background: var(--paper-cream);
+      padding: 2.8rem 2.2rem;
+      border-radius: 20px;
       text-align: center;
-      background: var(--glass-bg);
-      backdrop-filter: blur(25px) saturate(180%);
-      -webkit-backdrop-filter: blur(25px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: 28px;
-      box-shadow: var(--ios-shadow-elevated);
-      position: sticky;
-      top: 1.5rem;
-      z-index: 500;
-      animation: iosFadeUp 0.85s var(--spring-smooth) backwards;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: var(--shadow-center);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background-image: radial-gradient(rgba(38, 27, 22, 0.05) 0.75px, transparent 0.75px);
+      background-size: 20px 20px;
+      animation: iosFadeIn 1s var(--spring-smooth) backwards;
     }
 
-    @keyframes iosFadeUp {
-      0% { opacity: 0; transform: translateY(24px) scale(0.96); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+    @keyframes iosFadeIn {
+      0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .pill-badge {
-      background: #EFE4D2;
+      background: #EFE3D3;
       color: var(--espresso);
-      padding: 0.4rem 1.1rem;
+      padding: 0.35rem 1rem;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
 
     .main-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-size: clamp(2.3rem, 5.5vw, 3.4rem);
       line-height: 1.15;
-      margin-bottom: 0.4rem;
+      color: var(--espresso);
+      margin-bottom: 0.5rem;
       letter-spacing: -0.5px;
     }
 
     .subtitle {
-      font-size: 1.05rem;
-      color: #7D6B62;
-      margin-bottom: 1.8rem;
+      font-size: 1rem;
+      color: #725D53;
+      margin-bottom: 2rem;
+      font-weight: 500;
     }
 
-    /* Action Buttons */
+    /* Interactive Buttons */
     .button-box {
       display: flex;
       gap: 1.2rem;
@@ -151,9 +168,9 @@
 
     .btn {
       font-family: -apple-system, BlinkMacSystemFont, 'Outfit', sans-serif;
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      padding: 0.95rem 2.4rem;
+      padding: 0.95rem 2.2rem;
       border-radius: 999px;
       border: none;
       cursor: pointer;
@@ -172,19 +189,19 @@
     .btn-yes {
       background: var(--rose);
       color: #FFFFFF;
-      box-shadow: 0 10px 26px -4px rgba(230, 92, 71, 0.45);
-      animation: subtleFloat 3s ease-in-out infinite alternate;
+      box-shadow: 0 10px 24px -4px rgba(230, 92, 71, 0.5);
+      animation: subtlePulse 3s ease-in-out infinite alternate;
     }
 
     .btn-yes:hover {
       transform: scale(1.06);
       background: var(--rose-active);
-      box-shadow: 0 14px 32px -4px rgba(230, 92, 71, 0.55);
+      box-shadow: 0 14px 30px -4px rgba(230, 92, 71, 0.6);
     }
 
-    @keyframes subtleFloat {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-3px) scale(1.02); }
+    @keyframes subtlePulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.03) translateY(-2px); }
     }
 
     .btn-no-wrapper {
@@ -192,15 +209,15 @@
     }
 
     .btn-no {
-      background: #E8E0D7;
-      color: #6C5C54;
-      box-shadow: var(--ios-shadow-subtle);
+      background: #E8DFD5;
+      color: #6B5B52;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
     .btn-no.morphed {
       background: var(--rose);
       color: #FFFFFF;
-      box-shadow: 0 10px 28px -4px rgba(230, 92, 71, 0.45);
+      box-shadow: 0 10px 24px -4px rgba(230, 92, 71, 0.5);
       animation: springPop 0.45s var(--spring-bouncy) forwards;
     }
 
@@ -210,48 +227,46 @@
       100% { transform: scale(1.05); }
     }
 
-    /* 40 Scattered Postcards Canvas */
-    .collage-canvas {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem 6rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-      gap: 2.2rem 1.8rem;
-      perspective: 1500px;
+    /* Scattered Polaroid Cluster Layer */
+    .scatter-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
     }
 
-    .postcard {
-      position: relative;
-      height: 295px;
+    .polaroid {
+      position: absolute;
+      width: 195px;
+      height: 250px;
       cursor: pointer;
       perspective: 1200px;
-      transition: transform 0.5s var(--spring-bouncy), z-index 0.2s ease;
+      pointer-events: auto;
+      transition: transform 0.5s var(--spring-bouncy), z-index 0.2s ease, filter 0.3s ease;
       will-change: transform;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.32));
     }
 
-    .postcard:active {
-      transform: scale(0.95) !important;
+    .polaroid:hover, .polaroid.flipped {
+      z-index: 500 !important;
+      transform: scale(1.22) rotate(0deg) !important;
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,0.55));
     }
 
-    .postcard:hover, .postcard.flipped {
-      z-index: 200 !important;
-      transform: scale(1.1) translateY(-8px) !important;
+    .polaroid:active {
+      transform: scale(1.1) !important;
     }
 
     .card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      text-align: center;
-      transition: transform 0.8s cubic-bezier(0.34, 1.3, 0.64, 1);
+      transition: transform 0.75s cubic-bezier(0.34, 1.3, 0.64, 1);
       transform-style: preserve-3d;
-      border-radius: 12px;
-      box-shadow: var(--ios-shadow-elevated);
+      border-radius: 4px;
     }
 
-    .postcard.flipped .card-inner,
-    .postcard:hover .card-inner {
+    .polaroid.flipped .card-inner,
+    .polaroid:hover .card-inner {
       transform: rotateY(180deg);
     }
 
@@ -260,20 +275,20 @@
       inset: 0;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-      border-radius: 12px;
       background: var(--card-white);
-      padding: 10px 10px 22px 10px;
-      border: 0.5px solid rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+      padding: 10px 10px 30px 10px;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
     }
 
     .card-front img {
       width: 100%;
-      height: 215px;
+      height: 175px;
       object-fit: cover;
-      border-radius: 8px;
-      background: #ECE5DC;
+      border-radius: 2px;
+      background: #E5DDD3;
     }
 
     .card-front .caption {
@@ -283,62 +298,46 @@
       color: var(--espresso);
       margin-top: auto;
       text-align: center;
-    }
-
-    .tape {
-      position: absolute;
-      top: -9px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 65px;
-      height: 19px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-left: 2px dashed rgba(200, 180, 150, 0.5);
-      border-right: 2px dashed rgba(200, 180, 150, 0.5);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-      z-index: 5;
+      line-height: 1.1;
     }
 
     .card-back {
       transform: rotateY(180deg);
-      background: #FCFAF6;
+      background: #FFFDF9;
       justify-content: center;
       align-items: center;
-      padding: 1.5rem;
-      background-image: repeating-linear-gradient(transparent, transparent 25px, #EFE6DC 26px);
+      padding: 1.2rem;
+      background-image: repeating-linear-gradient(transparent, transparent 23px, #EFE6DC 24px);
     }
 
     .card-back p {
       font-family: 'Caveat', cursive;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       color: var(--espresso);
-      line-height: 1.45;
+      line-height: 1.4;
       text-align: center;
     }
 
     .stamp {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 3px 6px;
+      top: 8px;
+      right: 8px;
+      padding: 2px 5px;
       border: 1.5px dashed var(--caramel);
-      border-radius: 4px;
-      font-size: 0.65rem;
+      border-radius: 3px;
+      font-size: 0.6rem;
       color: var(--caramel);
       font-weight: 800;
-      letter-spacing: 0.8px;
     }
 
-    /* Modal Celebration */
+    /* Modal Celebration Sheet */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(20, 15, 12, 0.5);
+      background: rgba(15, 10, 8, 0.6);
       backdrop-filter: blur(18px) saturate(160%);
       -webkit-backdrop-filter: blur(18px) saturate(160%);
-      z-index: 1000;
+      z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -354,16 +353,14 @@
     }
 
     .modal-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(35px) saturate(190%);
-      -webkit-backdrop-filter: blur(35px) saturate(190%);
-      border: 1px solid var(--glass-border);
+      background: var(--paper-cream);
+      border: 1px solid rgba(255, 255, 255, 0.8);
       padding: 2.8rem 2.2rem;
       border-radius: 28px;
       text-align: center;
       max-width: 480px;
       width: 100%;
-      box-shadow: var(--ios-shadow-modal);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
       transform: translateY(30px) scale(0.92);
       transition: transform 0.5s var(--spring-bouncy);
     }
@@ -388,22 +385,23 @@
       font-weight: 500;
     }
 
-    @media (max-width: 640px) {
-      .hero-container {
-        position: relative;
-        top: 0;
-        margin: 1.5rem 1rem 2rem;
+    /* Responsive Mobile Layout Adjustments */
+    @media (max-width: 768px) {
+      .table-container {
+        min-height: 750px;
       }
-      .collage-canvas {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 1.2rem;
-        padding: 0.5rem;
-      }
-      .postcard {
-        height: 250px;
+      .polaroid {
+        width: 140px;
+        height: 185px;
       }
       .card-front img {
-        height: 175px;
+        height: 125px;
+      }
+      .card-front .caption {
+        font-size: 1rem;
+      }
+      .card-back p {
+        font-size: 1.05rem;
       }
       .button-box {
         flex-direction: column;
@@ -419,122 +417,110 @@
 
   <div id="rain-container"></div>
 
-  <!-- Main Question Hero Card (Frosted & Sticky) -->
-  <div class="hero-container">
-    <div class="pill-badge">☕ Delivered with extra love (and tiramisu!)</div>
-    <h1 class="main-title">Can I be yours?</h1>
-    <p class="subtitle">(Hover or tap each memory postcard below...)</p>
+  <div class="table-container">
+    
+    <!-- Layered Polaroids Scattered Around Center -->
+    <div class="scatter-layer" id="scatterLayer"></div>
 
-    <div class="button-box">
-      <button class="btn btn-yes" id="yesBtn">Yes, absolutely! 💖</button>
-      <div class="btn-no-wrapper">
-        <button class="btn btn-no" id="noBtn">No</button>
+    <!-- Center Question Letter -->
+    <div class="center-card">
+      <div class="pill-badge">☕ Delivered with extra love</div>
+      <h1 class="main-title">Can I be yours?</h1>
+      <p class="subtitle">(Hover or tap the memories scattered around us...)</p>
+
+      <div class="button-box">
+        <button class="btn btn-yes" id="yesBtn">Yes, absolutely! 💖</button>
+        <div class="btn-no-wrapper">
+          <button class="btn btn-no" id="noBtn">No</button>
+        </div>
       </div>
     </div>
+
   </div>
 
-  <!-- Scattered Collage (40 Postcards generated dynamically) -->
-  <div class="collage-canvas" id="collageCanvas"></div>
-
-  <!-- iOS Celebration Sheet -->
+  <!-- iOS Celebration Modal -->
   <div class="modal-overlay" id="celebrationOverlay">
     <div class="modal-card">
-      <h2>Bolu she said YES! 🥳</h2>
-      <p>Look at those dimples. Pick up your fork, enjoy the tiramisu 🍰📞</p>
+      <h2>She said YES! 🥳</h2>
+      <p>I can't wait to see your smile. Now grab your fork, enjoy the tiramisu, and let's hop on our call right now! 🍰📞</p>
       <button class="btn btn-yes" style="animation: none; width: 100%;" onclick="location.reload()">Replay the Magic ✨</button>
     </div>
   </div>
 
   <script>
-    // 40 Unique Romantic, Playful & Inside-joke Messages
-    const postcardMessages = [
-      { tag: "01", caption: "Day one vibes ✨", msg: "From our very first conversation, I knew you were going to be special." },
-      { tag: "02", caption: "Favorite smile 🌸", msg: "You have a way of brightening even the most overwhelming days." },
-      { tag: "03", caption: "Tiramisu time 🍰", msg: "'Tiramisu' means lift me up — and that’s what you do every single day." },
-      { tag: "04", caption: "Forever to go 💌", msg: "I don't want anyone else. I am completely all-in on this with you." },
-      { tag: "05", caption: "Late night calls 🌙", msg: "How five hours on the phone with you feels like five minutes." },
-      { tag: "06", caption: "Distance who? ✈️", msg: "Miles apart, but you’ve felt closer than anyone here." },
-      { tag: "07", caption: "That laugh 😂", msg: "Your laugh is genuinely the most contagious, beautiful sound." },
-      { tag: "08", caption: "Best notification 📱", msg: "Seeing your name pop up on my screen is the highlight of my day." },
-      { tag: "09", caption: "All my peace 🕊️", msg: "Thank you for being my calm and my sweetest comfort." },
-      { tag: "10", caption: "FaceTime dates 🥂", msg: "Screen lag and all, I’d rather have a digital date with you than anyone else." },
-      { tag: "11", caption: "Unmatched ✨", msg: "You have the kind of elegance, humor, and heart that can't be matched." },
-      { tag: "12", caption: "Sweetest soul 🍯", msg: "Everything about how you care for people inspires me." },
-      { tag: "13", caption: "Playlist for you 🎶", msg: "Every love song starts making complete sense when I think of you." },
-      { tag: "14", caption: "Future trips 🗺️", msg: "Can't wait to explore new cities with your hand in mine." },
-      { tag: "15", caption: "My favorite human 💖", msg: "Out of 8 billion people, you're the only one on my mind." },
-      { tag: "16", caption: "No backup plans 🔒", msg: "Zero doubts. 100% sure about you." },
-      { tag: "17", caption: "Inside jokes 🤫", msg: "Still laughing at what you said last week. You're hilarious." },
-      { tag: "18", caption: "Effortless ☕", msg: "Loving you has been the easiest, most natural thing in the world." },
-      { tag: "19", caption: "Your eyes 👀", msg: "Could get lost in your smile for hours across a screen." },
-      { tag: "20", caption: "Pure warmth ☀️", msg: "You bring warmth into every single conversation we share." },
-      { tag: "21", caption: "Sweet treat 🧁", msg: "Hope you're enjoying every single bite of that tiramisu!" },
-      { tag: "22", caption: "Team US 🏆", msg: "You and me together against any time zone difference." },
-      { tag: "23", caption: "The easiest yes 💍", msg: "Saying yes to you will always be the simplest choice." },
-      { tag: "24", caption: "Good mornings 🌅", msg: "Waking up to your texts always sets my whole day right." },
-      { tag: "25", caption: "Cherished 🌷", msg: "Every small memory we've made so far is locked in my heart." },
-      { tag: "26", caption: "Proud of you 🌟", msg: "I love seeing you work hard and shine. You're incredible." },
-      { tag: "27", caption: "My confidante 🗝️", msg: "You're the first person I want to tell when anything happens." },
-      { tag: "28", caption: "Forever mood 🥰", msg: "Never felt as understood and appreciated as when I talk to you." },
-      { tag: "29", caption: "Countdown ⏳", msg: "Counting every second until our next reunion in person." },
-      { tag: "30", caption: "Irreplaceable 💎", msg: "Nobody does it like you, Bube." },
-      { tag: "31", caption: "Pure joy 🎈", msg: "You make ordinary moments feel like genuine adventures." },
-      { tag: "32", caption: "Soft heart 🧸", msg: "Your kindness is the sweetest thing in this world." },
-      { tag: "33", caption: "Endless talks 💬", msg: "We never run out of things to say, and I love that about us." },
-      { tag: "34", caption: "Always you 🎯", msg: "Yesterday, today, tomorrow — it's always you." },
-      { tag: "35", caption: "Butterflies 🦋", msg: "You still give me butterflies every single time we connect." },
-      { tag: "36", caption: "My priority 💫", msg: "Making you happy is always at the top of my list." },
-      { tag: "37", caption: "Ready for us 🚀", msg: "Ready for every chapter, every trip, and every moment together." },
-      { tag: "38", caption: "Best blessing 🙏", msg: "Meeting you was the greatest thing to happen to me." },
-      { tag: "39", caption: "One call away 📞", msg: "Whenever you need me, I am always just one ring away." },
-      { tag: "40", caption: "Be mine? 💖", msg: "Now let's make this official. Will you be my girlfriend?" }
+    // 20 Structured Scattered Placements (Angles & Percentage Coordinates framing the center)
+    const scatterConfig = [
+      // Top row / cluster
+      { top: "4%",  left: "8%",  rot: -16, z: 12, cap: "Day one ✨", msg: "From our first conversation, I knew you were going to be special." },
+      { top: "2%",  left: "30%", rot: 8,   z: 15, cap: "Late calls 🌙", msg: "5 hours on the phone with you feels like 5 minutes." },
+      { top: "3%",  left: "54%", rot: -10, z: 14, cap: "That laugh 😂", msg: "Your laugh is my absolute favorite sound in the world." },
+      { top: "5%",  left: "76%", rot: 18,  z: 11, cap: "My peace 🕊️", msg: "Thank you for bringing so much calm and warmth into my life." },
+
+      // Left column overlapping cluster
+      { top: "28%", left: "3%",  rot: 14,  z: 18, cap: "Favorite smile 🌸", msg: "You brighten up even the most exhausting days." },
+      { top: "48%", left: "5%",  rot: -12, z: 22, cap: "Unmatched ✨", msg: "Your kindness and heart are truly one of a kind." },
+      { top: "68%", left: "4%",  rot: 20,  z: 16, cap: "Playlist for u 🎶", msg: "Every love song makes complete sense when I think of you." },
+
+      // Right column overlapping cluster
+      { top: "26%", left: "80%", rot: -15, z: 19, cap: "Tiramisu time 🍰", msg: "'Tiramisu' means lift me up — and that’s what you do every day for me." },
+      { top: "46%", left: "82%", rot: 11,  z: 21, cap: "Distance who? ✈️", msg: "Miles apart, but you’ve always felt right next to me." },
+      { top: "66%", left: "79%", rot: -18, z: 17, cap: "FaceTime dates 🥂", msg: "I’d rather have a digital date with you than be anywhere else." },
+
+      // Bottom row / cluster
+      { top: "74%", left: "18%", rot: -8,  z: 25, cap: "Sweetest soul 🍯", msg: "Everything about how you care for people inspires me." },
+      { top: "76%", left: "40%", rot: 12,  z: 28, cap: "Team US 🏆", msg: "You and me together against any time zone difference." },
+      { top: "73%", left: "62%", rot: -14, z: 24, cap: "Forever mood 🥰", msg: "I never feel as understood as when I’m talking to you." },
+
+      // Layered Under-Cards (Tucked partially behind the center card & neighbors)
+      { top: "18%", left: "16%", rot: -22, z: 5,  cap: "No doubts 🔒", msg: "Zero doubts. 100% sure about you." },
+      { top: "16%", left: "68%", rot: 24,  z: 6,  cap: "Inside jokes 🤫", msg: "Still smiling at what you told me yesterday." },
+      { top: "60%", left: "22%", rot: 16,  z: 8,  cap: "Best notification 📱", msg: "Seeing your name pop up is the best part of my day." },
+      { top: "58%", left: "70%", rot: -20, z: 7,  cap: "Future trips 🗺️", msg: "Can't wait to walk through new cities holding your hand." },
+      { top: "82%", left: "52%", rot: 6,   z: 30, cap: "Always you 🎯", msg: "Yesterday, today, tomorrow — it's always you, Bube." }
     ];
 
-    // Aesthetic image fallback placeholders
     const fallbackImages = [
-      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=500&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=450&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=450&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=450&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=450&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=450&auto=format&fit=crop&q=80"
     ];
 
-    const collageCanvas = document.getElementById('collageCanvas');
+    const scatterLayer = document.getElementById('scatterLayer');
 
-    // Dynamically render 40 scattered postcards
-    postcardMessages.forEach((item, index) => {
+    // Build the messy scatter
+    scatterConfig.forEach((item, index) => {
       const card = document.createElement('div');
-      card.className = 'postcard';
-      
-      // Random organic tilt & vertical shift
-      const randomRot = (Math.random() * 10 - 5).toFixed(1);
-      const randomY = (Math.random() * 14 - 7).toFixed(1);
-      card.style.transform = `rotate(${randomRot}deg) translateY(${randomY}px)`;
+      card.className = 'polaroid';
+      card.style.top = item.top;
+      card.style.left = item.left;
+      card.style.zIndex = item.z;
+      card.style.transform = `rotate(${item.rot}deg)`;
 
       const fallbackSrc = fallbackImages[index % fallbackImages.length];
       const imagePath = `./images/photo${index + 1}.jpg`;
 
       card.innerHTML = `
-        <div class="tape"></div>
         <div class="card-inner">
           <div class="card-front">
             <img src="${imagePath}" onerror="this.src='${fallbackSrc}'" alt="Memory ${index + 1}" loading="lazy" />
-            <div class="caption">${item.caption}</div>
+            <div class="caption">${item.cap}</div>
           </div>
           <div class="card-back">
-            <div class="stamp">#${item.tag}</div>
+            <div class="stamp">#${index + 1}</div>
             <p>${item.msg}</p>
           </div>
         </div>
       `;
 
-      // Tap support for mobile touch
-      card.addEventListener('click', () => {
+      // Mobile Tap Toggle
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
         card.classList.toggle('flipped');
       });
 
-      collageCanvas.appendChild(card);
+      scatterLayer.appendChild(card);
     });
 
     // Morphing "No" Button
@@ -564,7 +550,7 @@
     noBtn.addEventListener('mouseenter', morphNoButton);
     noBtn.addEventListener('touchstart', morphNoButton, { passive: false });
 
-    // Celebration triggers
+    // Celebration Triggers
     yesBtn.addEventListener('click', triggerCelebration);
     noBtn.addEventListener('click', triggerCelebration);
 
