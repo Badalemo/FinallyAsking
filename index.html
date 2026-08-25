@@ -405,7 +405,7 @@
         padding: 1rem 0.75rem 4rem;
       }
       .table-container {
-        min-height: 1650px;
+        min-height: 1750px;
         align-items: center;
       }
       .center-card {
@@ -471,61 +471,61 @@
   </div>
 
   <script>
-    // Full 18 Cards with Custom Coordinates for Desktop and Mobile
+    // Exact file paths & tailored messages for all 18 photos
     const scatterConfig = [
-      // #1 - Notification Center Screenshot ("I miss you smm")
-      { dTop: "3%",  dLeft: "8%",   mTop: "2%",   mLeft: "4%",   rot: -14, z: 12, msg: "Seeing your name and 'I miss you smm' pop up is always the best part of my day." },
-      
-      // #2 - FaceTime Date (Grocery store + Bubbles filter)
-      { dTop: "1%",  dLeft: "32%",  mTop: "1%",   mLeft: "54%",  rot: 8,   z: 15, msg: "FaceTime dates with you, goofy filters and all, make miles feel like nothing." },
+      // 1. Bangs / Wavy hair dimple selfie
+      { file: "9FD93412-8509-40F7-9D96-6362EA298F70.jpg", dTop: "3%",  dLeft: "8%",   mTop: "2%",   mLeft: "4%",   rot: -14, z: 12, msg: "That smile right there has my whole heart locked down forever." },
 
-      // #3 - Late Night Dim/Blue Lighting
-      { dTop: "2%",  dLeft: "55%",  mTop: "11%",  mLeft: "6%",   rot: -10, z: 14, msg: "Late night calls where 5 hours together still feels like 5 minutes." },
+      // 2. Aquaphor on teal headboard
+      { file: "A21C2509-BA66-4347-99EA-79B84427F5C1.jpg", dTop: "1%",  dLeft: "32%",  mTop: "1%",   mLeft: "54%",  rot: 8,   z: 15, msg: "Skincare queen! Always glowing and taking care of business ✨" },
 
-      // #4 - Satin Bonnet & Heart Necklace
-      { dTop: "4%",  dLeft: "78%",  mTop: "10%",  mLeft: "55%",  rot: 16,  z: 11, msg: "Effortlessly gorgeous in every single way, every single day." },
+      // 3. Auburn braids in magenta jacket
+      { file: "IMG_0985.JPG", dTop: "2%",  dLeft: "55%",  mTop: "11%",  mLeft: "6%",   rot: -10, z: 14, msg: "Look at that stunning smile. Every single detail about you is pure perfection." },
 
-      // #5 - Mustache / Beard Filter Selfie
-      { dTop: "18%", dLeft: "15%",  mTop: "20%",  mLeft: "3%",   rot: -20, z: 6,  msg: "You make me laugh harder and smile more than anyone in this world 😂" },
+      // 4. Notification Center ("I miss you smm")
+      { file: "IMG_4990.PNG", dTop: "4%",  dLeft: "78%",  mTop: "10%",  mLeft: "55%",  rot: 16,  z: 11, msg: "Seeing your name and 'I miss you smm' pop up is always the best part of my day." },
 
-      // #6 - Red Glasses & Goatee Filter
-      { dTop: "16%", dLeft: "68%",  mTop: "19%",  mLeft: "58%",  rot: 22,  z: 7,  msg: "My favorite partner in crime. There's nobody quite like you, Nzube." },
+      // 5. FaceTime grocery store + bubbles
+      { file: "IMG_5259.PNG", dTop: "18%", dLeft: "15%",  mTop: "20%",  mLeft: "3%",   rot: -20, z: 6,  msg: "FaceTime dates with you, goofy filters and all, make miles feel like nothing." },
 
-      // #7 - Headboard & Aquaphor Tube
-      { dTop: "35%", dLeft: "3%",   mTop: "29%",  mLeft: "28%",  rot: 15,  z: 22, msg: "Skincare queen! Always glowing and caring for everything you do ✨" },
+      // 6. Mustache / beard filter selfie
+      { file: "IMG_5644.JPG", dTop: "16%", dLeft: "68%",  mTop: "19%",  mLeft: "58%",  rot: 22,  z: 7,  msg: "You make me laugh harder and smile more than anyone in this world 😂" },
 
-      // #8 - Blurry Bonnet Laughing
-      { dTop: "33%", dLeft: "82%",  mTop: "38%",  mLeft: "-2%",  rot: -14, z: 21, msg: "Unfiltered, chaotic, and 100% my favorite human being." },
+      // 7. Red glasses & goatee filter
+      { file: "IMG_5776.PNG", dTop: "35%", dLeft: "3%",   mTop: "29%",  mLeft: "28%",  rot: 15,  z: 22, msg: "My favorite partner in crime. There's nobody quite like you, Nzube." },
 
-      // #9 - Glamorous Glossy Lips / Close-up
-      { dTop: "52%", dLeft: "4%",   mTop: "37%",  mLeft: "65%",  rot: -12, z: 20, msg: "Genuinely breathtaking. Out of 8 billion people, it's always only you." },
+      // 8. Pouting funny face with braids
+      { file: "IMG_7096.PNG", dTop: "33%", dLeft: "82%",  mTop: "38%",  mLeft: "-2%",  rot: -14, z: 21, msg: "Even when you're making funny faces at me, you're the cutest person alive." },
 
-      // #10 - Pretty Wavy Hair & Bangs Smirk
-      { dTop: "50%", dLeft: "81%",  mTop: "49%",  mLeft: "0%",   rot: 12,  z: 19, msg: "That smile right there has my whole heart locked down forever." },
+      // 9. FaceTime in glasses late night
+      { file: "IMG_7638.PNG", dTop: "52%", dLeft: "4%",   mTop: "37%",  mLeft: "65%",  rot: -12, z: 20, msg: "Looking into your eyes on call makes me realize I never want to look anywhere else." },
 
-      // #11 - Tiramisu & Sweet Dates
-      { dTop: "68%", dLeft: "18%",  mTop: "48%",  mLeft: "62%",  rot: 18,  z: 8,  msg: "'Tiramisu' means lift me up — and that’s what you do every single day." },
+      // 10. Winking selfie ("I'm telling you")
+      { file: "IMG_7681.PNG", dTop: "50%", dLeft: "81%",  mTop: "49%",  mLeft: "0%",   rot: 12,  z: 19, msg: "That cheeky wink! You always know how to brighten my entire day 😉" },
 
-      // #12 - Unmatched Connection
-      { dTop: "66%", dLeft: "68%",  mTop: "59%",  mLeft: "26%",  rot: -18, z: 9,  msg: "Your kindness, humor, and heart are truly impossible to match." },
+      // 11. Glossy lips close-up
+      { file: "IMG_8279.jpg", dTop: "68%", dLeft: "18%",  mTop: "48%",  mLeft: "62%",  rot: 18,  z: 8,  msg: "Genuinely breathtaking. Out of 8 billion people, it's always only you." },
 
-      // #13 - Safe Space & Peace
-      { dTop: "76%", dLeft: "5%",   mTop: "67%",  mLeft: "4%",   rot: -12, z: 24, msg: "I never feel as understood as when I'm talking to you." },
+      // 12. Leopard headscarf golden hour
+      { file: "IMG_8505.jpg", dTop: "66%", dLeft: "68%",  mTop: "59%",  mLeft: "26%",  rot: -18, z: 9,  msg: "Pure elegance and golden hour glow. You leave me speechless every time." },
 
-      // #14 - Shared Playlists & Songs
-      { dTop: "74%", dLeft: "79%",  mTop: "66%",  mLeft: "56%",  rot: 16,  z: 23, msg: "Every single love song makes complete sense when I think of you." },
+      // 13. Striped tank top candid
+      { file: "lp_image(1).jpg", dTop: "76%", dLeft: "5%",   mTop: "67%",  mLeft: "4%",   rot: -12, z: 24, msg: "Just a candid of you being absolute sunshine in my life." },
 
-      // #15 - Distance Reassurance
-      { dTop: "84%", dLeft: "26%",  mTop: "76%",  mLeft: "2%",   rot: 10,  z: 26, msg: "You and me together against any time zone difference." },
+      // 14. Dark room blue glow
+      { file: "lp_image(2).jpg", dTop: "74%", dLeft: "79%",  mTop: "66%",  mLeft: "56%",  rot: 16,  z: 23, msg: "Late night calls where 5 hours together still feels like 5 minutes." },
 
-      // #16 - Future Trips & Memories
-      { dTop: "83%", dLeft: "52%",  mTop: "75%",  mLeft: "54%",  rot: -15, z: 25, msg: "Can't wait to walk through new cities with your hand in mine." },
+      // 15. Satin bonnet & heart necklace
+      { file: "lp_image(3).jpg", dTop: "84%", dLeft: "26%",  mTop: "76%",  mLeft: "2%",   rot: 10,  z: 26, msg: "Effortlessly gorgeous in every single way, every single day." },
 
-      // #17 - Unfiltered Joy
-      { dTop: "88%", dLeft: "75%",  mTop: "85%",  mLeft: "28%",  rot: 6,   z: 28, msg: "Loving you has been the easiest, sweetest thing in the world." },
+      // 16. Blurry laughing in glasses & bonnet
+      { file: "lp_image(4).jpg", dTop: "83%", dLeft: "52%",  mTop: "75%",  mLeft: "54%",  rot: -15, z: 25, msg: "Unfiltered, chaotic, and 100% my favorite human being." },
 
-      // #18 - All-In Commitment
-      { dTop: "86%", dLeft: "6%",   mTop: "93%",  mLeft: "10%",  rot: -8,  z: 27, msg: "Yesterday, today, tomorrow — it's always you, Bube." }
+      // 17. Flexing bicep in glasses
+      { file: "lp_image(5).jpg", dTop: "88%", dLeft: "75%",  mTop: "85%",  mLeft: "28%",  rot: 6,   z: 28, msg: "My strongest supporter and best friend. We're an unstoppable team 💪❤️" },
+
+      // 18. Red lace top tossing hair
+      { file: "lp_image.jpg", dTop: "86%", dLeft: "6%",   mTop: "93%",  mLeft: "10%",  rot: -8,  z: 27, msg: "That radiant joy right there. Yesterday, today, tomorrow — it's always you, Bube." }
     ];
 
     const fallbackImages = [
@@ -539,7 +539,7 @@
     const scatterLayer = document.getElementById('scatterLayer');
     const isMobile = window.innerWidth <= 768;
 
-    // Render cards with faint index identifier on the bottom-right chin
+    // Render cards with exact filenames
     scatterConfig.forEach((item, index) => {
       const card = document.createElement('div');
       card.className = 'polaroid';
@@ -549,7 +549,7 @@
       card.style.transform = `rotate(${item.rot}deg)`;
 
       const fallbackSrc = fallbackImages[index % fallbackImages.length];
-      const imagePath = `./images/photo${index + 1}.jpg`;
+      const imagePath = `./images/${item.file}`;
 
       card.innerHTML = `
         <div class="card-inner">
@@ -636,7 +636,7 @@
         setTimeout(() => {
           const dropWrapper = document.createElement('div');
           dropWrapper.className = 'falling-drop';
-          
+
           const dropContent = document.createElement('span');
           dropContent.className = 'falling-content';
           dropContent.textContent = items[Math.floor(Math.random() * items.length)];
