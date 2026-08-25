@@ -405,7 +405,7 @@
         padding: 1rem 0.75rem 4rem;
       }
       .table-container {
-        min-height: 1350px;
+        min-height: 1450px;
         align-items: center;
       }
       .center-card {
@@ -471,35 +471,35 @@
   </div>
 
   <script>
-    // Distinct Desktop & Mobile Positioning Coordinates
+    // Distinct Desktop & Mobile Positioning Coordinates (18 Cards)
     const scatterConfig = [
       // Top Area (Above Card)
-      { dTop: "3%",  dLeft: "8%",  mTop: "2%",   mLeft: "4%",   rot: -14, z: 12, msg: "From our first conversation, I knew you were going to be special." },
-      { dTop: "1%",  dLeft: "32%", mTop: "1%",   mLeft: "52%",  rot: 8,   z: 15, msg: "5 hours on the phone with you feels like 5 minutes." },
-      { dTop: "2%",  dLeft: "55%", mTop: "14%",  mLeft: "8%",   rot: -10, z: 14, msg: "Your laugh is my absolute favorite sound in the world." },
-      { dTop: "4%",  dLeft: "78%", mTop: "13%",  mLeft: "56%",  rot: 16,  z: 11, msg: "Thank you for bringing so much calm and warmth into my life." },
+      { dTop: "3%",  dLeft: "8%",   mTop: "2%",   mLeft: "4%",   rot: -14, z: 12, msg: "From our first conversation, I knew you were going to be special." },
+      { dTop: "1%",  dLeft: "32%",  mTop: "1%",   mLeft: "52%",  rot: 8,   z: 15, msg: "5 hours on the phone with you feels like 5 minutes." },
+      { dTop: "2%",  dLeft: "55%",  mTop: "13%",  mLeft: "6%",   rot: -10, z: 14, msg: "Your laugh is my absolute favorite sound in the world." },
+      { dTop: "4%",  dLeft: "78%",  mTop: "12%",  mLeft: "55%",  rot: 16,  z: 11, msg: "Thank you for bringing so much calm and warmth into my life." },
       
       // Upper Flanks (Peeking alongside top of card)
-      { dTop: "18%", dLeft: "15%", mTop: "25%",  mLeft: "2%",   rot: -20, z: 6,  msg: "Zero doubts. 100% sure about you." },
-      { dTop: "16%", dLeft: "68%", mTop: "24%",  mLeft: "60%",  rot: 22,  z: 7,  msg: "Still smiling at what you told me yesterday." },
+      { dTop: "18%", dLeft: "15%",  mTop: "23%",  mLeft: "2%",   rot: -20, z: 6,  msg: "Zero doubts. 100% sure about you." },
+      { dTop: "16%", dLeft: "68%",  mTop: "22%",  mLeft: "58%",  rot: 22,  z: 7,  msg: "Still smiling at what you told me yesterday." },
 
       // Middle Flanks (Sides of card)
-      { dTop: "35%", dLeft: "3%",  mTop: "36%",  mLeft: "-2%",  rot: 15,  z: 22, msg: "You brighten up even the most exhausting days." },
-      { dTop: "33%", dLeft: "82%", mTop: "35%",  mLeft: "64%",  rot: -14, z: 21, msg: "Miles apart, but you’ve always felt right next to me." },
-      { dTop: "52%", dLeft: "4%",  mTop: "48%",  mLeft: "0%",   rot: -12, z: 20, msg: "Your kindness and heart are truly one of a kind." },
-      { dTop: "50%", dLeft: "81%", mTop: "47%",  mLeft: "63%",  rot: 12,  z: 19, msg: "'Tiramisu' means lift me up — and that’s what you do every day for me." },
+      { dTop: "35%", dLeft: "3%",   mTop: "33%",  mLeft: "-2%",  rot: 15,  z: 22, msg: "You brighten up even the most exhausting days." },
+      { dTop: "33%", dLeft: "82%",  mTop: "32%",  mLeft: "64%",  rot: -14, z: 21, msg: "Miles apart, but you’ve always felt right next to me." },
+      { dTop: "52%", dLeft: "4%",   mTop: "44%",  mLeft: "0%",   rot: -12, z: 20, msg: "Your kindness and heart are truly one of a kind." },
+      { dTop: "50%", dLeft: "81%",  mTop: "43%",  mLeft: "62%",  rot: 12,  z: 19, msg: "'Tiramisu' means lift me up — and that’s what you do every day for me." },
 
       // Lower Flanks (Peeking alongside bottom of card)
-      { dTop: "68%", dLeft: "18%", mTop: "60%",  mLeft: "3%",   rot: 18,  z: 8,  msg: "Seeing your name pop up is the best part of my day." },
-      { dTop: "66%", dLeft: "68%", mTop: "59%",  mLeft: "58%",  rot: -18, z: 9,  msg: "Can't wait to walk through new cities holding your hand." },
+      { dTop: "68%", dLeft: "18%",  mTop: "55%",  mLeft: "2%",   rot: 18,  z: 8,  msg: "Seeing your name pop up is the best part of my day." },
+      { dTop: "66%", dLeft: "68%",  mTop: "54%",  mLeft: "58%",  rot: -18, z: 9,  msg: "Can't wait to walk through new cities holding your hand." },
 
       // Bottom Area (Below Card)
-      { dTop: "75%", dLeft: "4%",  mTop: "72%",  mLeft: "5%",   rot: -12, z: 24, msg: "Every love song makes complete sense when I think of you." },
-      { dTop: "74%", dLeft: "80%", mTop: "71%",  mLeft: "55%",  rot: 16,  z: 23, msg: "I’d rather have a call with you right now than be anywhere else." },
-      { dTop: "84%", dLeft: "26%", mTop: "83%",  mLeft: "8%",   rot: 10,  z: 26, msg: "Everything about how you care for people inspires me." },
-      { dTop: "83%", dLeft: "52%", mTop: "82%",  mLeft: "54%",  rot: -15, z: 25, msg: "You and me together against any time zone difference." },
-      { dTop: "88%", dLeft: "74%", mTop: "91%",  mLeft: "28%",  rot: 6,   z: 28, msg: "Yesterday, today, tomorrow — it's always you, Bube." },
-      { dTop: "86%", dLeft: "6%",  mTop: "93%",  mLeft: "4%",   rot: -8,  z: 27, msg: "I never feel as understood as when I’m talking to you." }
+      { dTop: "75%", dLeft: "4%",   mTop: "66%",  mLeft: "4%",   rot: -12, z: 24, msg: "Every love song makes complete sense when I think of you." },
+      { dTop: "74%", dLeft: "80%",  mTop: "65%",  mLeft: "56%",  rot: 16,  z: 23, msg: "I’d rather have a call with you right now than be anywhere else." },
+      { dTop: "84%", dLeft: "26%",  mTop: "77%",  mLeft: "6%",   rot: 10,  z: 26, msg: "Everything about how you care for people inspires me." },
+      { dTop: "83%", dLeft: "52%",  mTop: "76%",  mLeft: "54%",  rot: -15, z: 25, msg: "You and me together against any time zone difference." },
+      { dTop: "88%", dLeft: "74%",  mTop: "88%",  mLeft: "30%",  rot: 6,   z: 28, msg: "Yesterday, today, tomorrow — it's always you, Bube." },
+      { dTop: "86%", dLeft: "6%",   mTop: "90%",  mLeft: "3%",   rot: -8,  z: 27, msg: "I never feel as understood as when I’m talking to you." }
     ];
 
     const fallbackImages = [
