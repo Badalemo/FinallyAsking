@@ -471,35 +471,37 @@
   </div>
 
   <script>
-    // Distinct Desktop & Mobile Positioning Coordinates (18 Cards)
+    // 10 Custom Cards Tailored Directly to Your Shared Photos
     const scatterConfig = [
-      // Top Area (Above Card)
-      { dTop: "3%",  dLeft: "8%",   mTop: "2%",   mLeft: "4%",   rot: -14, z: 12, msg: "From our first conversation, I knew you were going to be special." },
-      { dTop: "1%",  dLeft: "32%",  mTop: "1%",   mLeft: "52%",  rot: 8,   z: 15, msg: "5 hours on the phone with you feels like 5 minutes." },
-      { dTop: "2%",  dLeft: "55%",  mTop: "13%",  mLeft: "6%",   rot: -10, z: 14, msg: "Your laugh is my absolute favorite sound in the world." },
-      { dTop: "4%",  dLeft: "78%",  mTop: "12%",  mLeft: "55%",  rot: 16,  z: 11, msg: "Thank you for bringing so much calm and warmth into my life." },
+      // #1 - Notification Center Screenshot ("I miss you smm")
+      { dTop: "4%",  dLeft: "8%",   mTop: "2%",   mLeft: "4%",   rot: -14, z: 12, msg: "Seeing your name and 'I miss you smm' pop up is always the best part of my day." },
       
-      // Upper Flanks (Peeking alongside top of card)
-      { dTop: "18%", dLeft: "15%",  mTop: "23%",  mLeft: "2%",   rot: -20, z: 6,  msg: "Zero doubts. 100% sure about you." },
-      { dTop: "16%", dLeft: "68%",  mTop: "22%",  mLeft: "58%",  rot: 22,  z: 7,  msg: "Still smiling at what you told me yesterday." },
+      // #2 - FaceTime Date (Grocery store + Bubbles filter)
+      { dTop: "2%",  dLeft: "76%",  mTop: "1%",   mLeft: "54%",  rot: 15,  z: 15, msg: "FaceTime dates with you, goofy filters and all, make miles feel like nothing." },
 
-      // Middle Flanks (Sides of card)
-      { dTop: "35%", dLeft: "3%",   mTop: "33%",  mLeft: "-2%",  rot: 15,  z: 22, msg: "You brighten up even the most exhausting days." },
-      { dTop: "33%", dLeft: "82%",  mTop: "32%",  mLeft: "64%",  rot: -14, z: 21, msg: "Miles apart, but you’ve always felt right next to me." },
-      { dTop: "52%", dLeft: "4%",   mTop: "44%",  mLeft: "0%",   rot: -12, z: 20, msg: "Your kindness and heart are truly one of a kind." },
-      { dTop: "50%", dLeft: "81%",  mTop: "43%",  mLeft: "62%",  rot: 12,  z: 19, msg: "'Tiramisu' means lift me up — and that’s what you do every day for me." },
+      // #3 - Late Night Dim/Blue Lighting
+      { dTop: "22%", dLeft: "4%",   mTop: "15%",  mLeft: "28%",  rot: 8,   z: 14, msg: "Late night calls where 5 hours together still feels like 5 minutes." },
 
-      // Lower Flanks (Peeking alongside bottom of card)
-      { dTop: "68%", dLeft: "18%",  mTop: "55%",  mLeft: "2%",   rot: 18,  z: 8,  msg: "Seeing your name pop up is the best part of my day." },
-      { dTop: "66%", dLeft: "68%",  mTop: "54%",  mLeft: "58%",  rot: -18, z: 9,  msg: "Can't wait to walk through new cities holding your hand." },
+      // #4 - Satin Bonnet & Heart Necklace
+      { dTop: "20%", dLeft: "80%",  mTop: "27%",  mLeft: "2%",   rot: -18, z: 11, msg: "Effortlessly gorgeous in every single way, every single day." },
 
-      // Bottom Area (Below Card)
-      { dTop: "75%", dLeft: "4%",   mTop: "66%",  mLeft: "4%",   rot: -12, z: 24, msg: "Every love song makes complete sense when I think of you." },
-      { dTop: "74%", dLeft: "80%",  mTop: "65%",  mLeft: "56%",  rot: 16,  z: 23, msg: "I’d rather have a call with you right now than be anywhere else." },
-      { dTop: "84%", dLeft: "26%",  mTop: "77%",  mLeft: "6%",   rot: 10,  z: 26, msg: "Everything about how you care for people inspires me." },
-      { dTop: "83%", dLeft: "52%",  mTop: "76%",  mLeft: "54%",  rot: -15, z: 25, msg: "You and me together against any time zone difference." },
-      { dTop: "88%", dLeft: "74%",  mTop: "88%",  mLeft: "30%",  rot: 6,   z: 28, msg: "Yesterday, today, tomorrow — it's always you, Bube." },
-      { dTop: "86%", dLeft: "6%",   mTop: "90%",  mLeft: "3%",   rot: -8,  z: 27, msg: "I never feel as understood as when I’m talking to you." }
+      // #5 - Mustache / Beard Filter Selfie
+      { dTop: "42%", dLeft: "2%",   mTop: "26%",  mLeft: "60%",  rot: 16,  z: 22, msg: "You make me laugh harder and smile more than anyone in this world 😂" },
+
+      // #6 - Red Glasses & Goatee Filter
+      { dTop: "40%", dLeft: "82%",  mTop: "62%",  mLeft: "2%",   rot: -12, z: 21, msg: "My favorite partner in crime. There's nobody quite like you, Nzube." },
+
+      // #7 - Headboard & Aquaphor Tube
+      { dTop: "64%", dLeft: "6%",   mTop: "61%",  mLeft: "58%",  rot: 18,  z: 20, msg: "Skincare queen! Always glowing and caring for everything you do ✨" },
+
+      // #8 - Blurry Bonnet Laughing
+      { dTop: "62%", dLeft: "80%",  mTop: "75%",  mLeft: "26%",  rot: -15, z: 19, msg: "Unfiltered, chaotic, and 100% my favorite human being." },
+
+      // #9 - Glamorous Glossy Lips / Close-up
+      { dTop: "82%", dLeft: "22%",  mTop: "88%",  mLeft: "4%",   rot: 10,  z: 26, msg: "Genuinely breathtaking. Out of 8 billion people, it's always only you." },
+
+      // #10 - Pretty Wavy Hair & Bangs Smirk
+      { dTop: "80%", dLeft: "60%",  mTop: "87%",  mLeft: "54%",  rot: -14, z: 25, msg: "That smile right there has my whole heart locked down forever." }
     ];
 
     const fallbackImages = [
